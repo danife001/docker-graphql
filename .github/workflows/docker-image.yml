@@ -30,7 +30,7 @@ jobs:
          
     - name: Push Docker Image
       run: |
-         docker build danife001/docker-grahql:0.0.2 .
+         docker build danife001/docker-grahql:0.0.2 
 
 
 

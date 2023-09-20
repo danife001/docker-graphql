@@ -29,19 +29,25 @@ jobs:
       env:
         DOCKER_USER: ${{ secrets.DOCKER_USER }}
         DOCKER_PASSWORD: ${{ secrets.DOCKER_POSSWORD }}
-        NEW_VERSION: ${{ steps.version.outputs.version }}
+        
       run: |
           docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
           echo "New VErsion: $NEW_VERSION"
-    # - name: Build Docker Image
-    #   run: |
-    #      docker build -t danife001/docker-grahql:0.0.2 .
-    #      docker build -t danife001/docker-grahql:lastet .
+    - name: Build Docker Image
+      env:
+        NEW_VERSION: ${{ steps.version.outputs.version }}
+      
+      run: |
+         docker build -t danife001/docker-grahql:$NEW_VERSION .
+         docker build -t danife001/docker-grahql:lastet .
          
-    # - name: Push Docker Image
-    #   run: |
-    #      docker push danife001/docker-grahql:0.0.2
-    #      docker push danife001/docker-grahql:lastet
+    - name: Push Docker Image
+      env:
+        NEW_VERSION: ${{ steps.version.outputs.version }}
+      
+      run: |
+         docker push danife001/docker-grahql:$NEW_VERSION
+         docker push danife001/docker-grahql:lastet
 
 
 

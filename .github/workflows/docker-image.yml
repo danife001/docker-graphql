@@ -28,10 +28,12 @@ jobs:
     - name: Build Docker Image
       run: |
          docker build -t danife001/docker-grahql:0.0.2 .
+         docker build -t danife001/docker-grahql:lastet .
          
     - name: Push Docker Image
       run: |
          docker push danife001/docker-grahql:0.0.2
+         docker push danife001/docker-grahql:lastet
 
 
 

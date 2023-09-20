@@ -24,13 +24,14 @@ jobs:
         DOCKER_PASSWORD: ${{ secrets.DOCKER_POSSWORD }}
       run: |
           docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+          
     - name: Build Docker Image
       run: |
          docker build -t danife001/docker-grahql:0.0.2 .
          
     - name: Push Docker Image
       run: |
-         docker build danife001/docker-grahql:0.0.2
+         docker push danife001/docker-grahql:0.0.2
 
 
 
